@@ -43,7 +43,7 @@ $tracks = '';
 foreach($top_tracks['toptracks']['track'] as $track) {
 
 	$tracks .= $track['artist']['name'] . " - ";
-	$tracks .= echo $track['name'] . "<br/>";
+	$tracks .= $track['name'] . "<br/>";
 
 }
 
@@ -114,10 +114,12 @@ foreach($top_tracks['toptracks']['track'] as $track) {
 			
 			<input type='hidden' name='tracks' value="<? echo $tracks  ?>"  />	
 					
-		</form>
-	
 		
-		<h1 id='your_station_link'><a href='your-station.php' >Join your comrades in transit</a></h1>
+			<textarea name='journey_reason' id='journey_reason'> </textarea>
+		
+			<input type='submit' id ='your_station_link' value='visit your station' />
+		
+		</form>
 		
 	</div>
 

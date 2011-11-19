@@ -1,46 +1,38 @@
 <?
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+require_once('db_functions.php'); 
 
-$api_key = '6a02e719627efa9c150dc51595c9ccb9';
-$api_secret = 'f7bbcc6ef14fd79655f09efb14b99316'; 
-$callback_url  = urlencode('http://localhost:8888/honda/html/your-station.php');
-
-include('urlToObject.php');
-
-if (empty($_GET['token'])) { // user not logged in, and not being redirected from log in 
-	header("Location: http://www.last.fm/api/auth/?api_key=$api_key&cb=$callback_url"); 	
-}
-
-if (isset($_GET['token'])) {
-	$token = $_GET['token'];
+if (!empty($_POST['origin'])) {
 	
-	$param1 = "api_key".$api_key; 
-	//$param2 = "formatjson";
-	$param3 = "methodauth.getSession";
-	$param4 = "token".$token;
-	$param5 = $api_secret;
-	$api_sig = md5($param1.$param3.$param4.$param5);
+	$origin = addslashes($_POST['origin']);
+	$destination = addslashes($_POST['destination']);
+	$journey_reason = addslashes($_POST['journey_reason']);
+	$duration = addslashes($_POST['duration']);
+	if (!empty($_POST['lastfm_id'])) { $lastfm_id = addslashes($_POST['lastfm_id']);}
+	else { $lastfm_id = '';}
+	if (!empty($_POST['tracks'])) {$tracks = addslashes($_POST['tracks']);}
+	else {$tracks = '';}
+	$name = addslashes($_POST['name']);					
 	
-	$url = "http://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=$api_key&api_sig=$api_sig&token=$token&format=json";
-	$user_json = urlToText($url); 
-	$user = json_decode($user_json, true);
-	//print_r($user);
-	$user_name=$user['session']['name'];
+	$query = "INSERT INTO users (lastfm_id, name, journey_reason, playlist, departure_time, arrival_time, origin, destination) VALUES ()"
+	
+	echo ($query);
+	
+	//db_q($query);
+	
+	
+	
 }
 
 
-//now, get the users shit together 
 
-$url ="http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=$user_name&api_key=$api_key&format=json&limit=10";
-$top_tracks_json = urlToText($url);
 
-$top_tracks = json_decode($top_tracks_json, true);
 
 
 
 ?>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -76,14 +68,6 @@ $top_tracks = json_decode($top_tracks_json, true);
 	<div id='container'>
     	<h1>Citizen Band Radio</h1>
 		
-		<?
-		foreach($top_tracks['toptracks']['track'] as $track) {
-
-			echo $track['artist']['name'] . " - ";
-			echo $track['name'] . "<br/>";
-
-		}
-		?>
 		
 	</div>
 

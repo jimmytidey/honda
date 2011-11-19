@@ -43,7 +43,7 @@
 			<h2>Journey end</h2>
 			<label for='detination'>Destination&nbsp;</lable><input type='text' id='destination' name='destination' >	
 			<div id='end_map' class='journey_map' ></div>
-		</form>
+	
 		
 		<h2>Details</h2>
 		
@@ -62,7 +62,11 @@
 		
 		<label for='name'>User name&nbsp;</lable><input type='text' id='name' name='name' >
 		
-		<h1 id='your_station_link'><a href='your-station.php' >Join your comrades in transit</a></h1>
+		<textarea name='journey_reason' id='journey_reason'> </textarea>
+		
+		<input type='submit' id ='your_station_link' value='visit your station' />
+		
+		</form>
 		
 	</div>
 

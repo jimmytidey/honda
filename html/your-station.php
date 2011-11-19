@@ -7,6 +7,7 @@ $api_key = '6a02e719627efa9c150dc51595c9ccb9';
 $api_secret = 'f7bbcc6ef14fd79655f09efb14b99316'; 
 $callback_url  = urlencode('http://localhost:8888/honda/html/your-station.php');
 
+include('urlToObject.php');
 
 if (empty($_GET['token'])) { // user not logged in, and not being redirected from log in 
 	header("Location: http://www.last.fm/api/auth/?api_key=$api_key&cb=$callback_url"); 	
@@ -16,16 +17,76 @@ if (isset($_GET['token'])) {
 	$token = $_GET['token'];
 	
 	$param1 = "api_key".$api_key; 
-	$param2 = "formatjson";
+	//$param2 = "formatjson";
 	$param3 = "methodauth.getSession";
 	$param4 = "token".$token;
 	$param5 = $api_secret;
-	$api_sig = md5($param1.$param2.$param3.$param4.$param5);
+	$api_sig = md5($param1.$param3.$param4.$param5);
 	
 	$url = "http://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=$api_key&api_sig=$api_sig&token=$token&format=json";
-	$user = urlToText($url); 
-	print($user)
+	$user_json = urlToText($url); 
+	$user = json_decode($user_json, true);
+	//print_r($user);
+	$user_name=$user['session']['name'];
 }
 
 
+//now, get the users shit together 
+
+$url ="http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=$user_name&api_key=$api_key&format=json&limit=10";
+$top_tracks_json = urlToText($url);
+
+$top_tracks = json_decode($top_tracks_json, true);
+
+
+
 ?>
+<!DOCTYPE html>
+
+<html>
+<head>
+
+	<meta charset=utf-8 />
+
+
+	<title>Jimmy Tidey</title> 
+
+	<link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+	
+	<script type='text/javascript' src='script/script.js' ></script>
+	
+	<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+	
+	<script src='http://heresay.org.uk/api/js/mapstraction.js'></script>
+	
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+	
+</head> 
+
+<body>
+
+	<div pub-key="pub-3935e335-b4d7-4c1d-a53f-9902f8d18cb5" sub-key="sub-3cb83317-12c2-11e1-ae8f-cd58960bee98" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
+	
+	<div id='container'>
+    	<h1>Citizen Band Radio</h1>
+		
+		<?
+		foreach($top_tracks['toptracks']['track'] as $track) {
+
+			echo $track['artist']['name'] . " - ";
+			echo $track['name'] . "<br/>";
+
+		}
+		?>
+		
+	</div>
+
+</body>
+</html>
+

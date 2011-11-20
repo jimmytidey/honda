@@ -18,7 +18,6 @@
 			$total_playlist = array_merge($total_playlist, $playlist['toptracks']['track']);
 		}
 	}
-
 	
 	foreach($total_playlist as $track)  { 
 		echo $track['artist']['name'] . ' - ' ; 

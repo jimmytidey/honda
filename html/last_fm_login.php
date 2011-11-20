@@ -52,8 +52,16 @@ $top_tracks_json = htmlspecialchars(urlToText($url));
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
-
-  	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAtMGi9FIBTgJEO7_c1ZK0JRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQzNGXo5BiYmSbnJ18mxJIrw9AhGg" type="text/javascript"></script>
+	
+	<? if ($_SERVER['HTTP_HOST'] =='localhost:8888') { 
+			echo '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAtMGi9FIBTgJEO7_c1ZK0JRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQzNGXo5BiYmSbnJ18mxJIrw9AhGg" type="text/javascript"></script>';
+		}
+		else { 
+			echo '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=ABQIAAAAtMGi9FIBTgJEO7_c1ZK0JRQ8Umpnz3t-Fc3gMfW6JWnQdyf2aRTlkqBYxHo52jsDDe9n2dQVRfv9kA" type="text/javascript"></script>';
+		}
+	
+	
+	?> 
 	
 	<script src='http://heresay.org.uk/api/js/mapstraction.js'></script>
 	

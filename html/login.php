@@ -36,35 +36,39 @@
 		
 		<h2>Journey start</h2>
 		
-		<form method='POST' target ='your-station.php' >
-			<label for='origin'>Starting From&nbsp;</lable><input type='text' id='origin' name='origin' >	
+		<form method='post' action='your-station.php' >
+			
+			<label for='origin'>Starting From&nbsp;</label><input type='text' id='origin' name='origin' >	
 			<div id='start_map' class='journey_map' ></div>
 		
 			<h2>Journey end</h2>
-			<label for='detination'>Destination&nbsp;</lable><input type='text' id='destination' name='destination' >	
+			<label for='detination'>Destination&nbsp;</label><input type='text' id='destination' name='destination' >	
 			<div id='end_map' class='journey_map' ></div>
-	
 		
-		<h2>Details</h2>
+			<h2>Details</h2>
 		
-		<label for='duration'>Estimated journey duration&nbsp;</lable>
-		<select id='duration' name='duration' >
-			<option value='0.5'>30 mins</option>
-			<option value='1'>1 hour</option>
-			<option value='1.5'>1.5 hours</option>
-			<option value='2'>2 hours</option>									
-			<option value='3'>3 hours</option>
-			<option value='4'>4 hours</option>
-			<option value='5'>5 hours</option>									
-		</select>
+			<label for='duration'>Estimated journey duration&nbsp;</label>
+			<select id='duration' name='duration' >
+				<option value='0.5'>30 mins</option>
+				<option value='1'>1 hour</option>
+				<option value='1.5'>1.5 hours</option>
+				<option value='2'>2 hours</option>									
+				<option value='3'>3 hours</option>
+				<option value='4'>4 hours</option>
+				<option value='5'>5 hours</option>									
+			</select>
 		
-		<br/><br/>
+			<br/><br/>
 		
-		<label for='name'>User name&nbsp;</lable><input type='text' id='name' name='name' >
+			<label for='name'>User name&nbsp;</label><input type='text' id='name' name='name' >
 		
-		<textarea name='journey_reason' id='journey_reason'> </textarea>
+			<br />
 		
-		<input type='submit' id ='your_station_link' value='visit your station' />
+			<label for='journey_reason'>Care to share the reason for your journey?</label>
+			<textarea name='journey_reason' id='journey_reason' ></textarea>		
+			<br /><br /> 
+		
+			<input type='submit' id='your_station_link' value='Get on the road...' />
 		
 		</form>
 		

@@ -1,34 +1,24 @@
 <?
-
 require_once('db_functions.php'); 
 
-if (!empty($_POST['origin'])) {
-	
-	$origin = addslashes($_POST['origin']);
-	$destination = addslashes($_POST['destination']);
-	$journey_reason = addslashes($_POST['journey_reason']);
-	$duration = addslashes($_POST['duration']);
-	if (!empty($_POST['lastfm_id'])) { $lastfm_id = addslashes($_POST['lastfm_id']);}
-	else { $lastfm_id = '';}
-	if (!empty($_POST['tracks'])) {$tracks = addslashes($_POST['tracks']);}
-	else {$tracks = '';}
-	$name = addslashes($_POST['name']);					
-	
-	$query = "INSERT INTO users (lastfm_id, name, journey_reason, playlist, departure_time, arrival_time, origin, destination) VALUES ()"
-	
-	echo ($query);
-	
-	//db_q($query);
-	
-	
-	
-}
+$origin = addslashes($_POST['origin']);
+$destination = addslashes($_POST['destination']);
+if (!empty($_POST['journey_reason'])) {$journey_reason = addslashes($_POST['journey_reason']);}
+else {$journey_reason = '0';}
+$duration = addslashes($_POST['duration']);
+if (!empty($_POST['lastfm_id'])) { $lastfm_id = addslashes($_POST['lastfm_id']);}
+else { $lastfm_id = '0';}
+if (!empty($_POST['tracks'])) {$tracks = addslashes(htmlspecialchars_decode($_POST['tracks']));}
+else {$tracks = '0';}
 
+$name = addslashes($_POST['name']);					
+$departure_time = time();
+$arrival_time = time() + $_POST['duration'] * 3600; 
+$query = "INSERT INTO users (lastfm_id, name, journey_reason, playlist, departure_time, arrival_time, origin, destination) VALUES ('$lastfm_id', '$name', '$journey_reason', '$tracks', '$departure_time', '$arrival_time', '$origin', '$destination')";
 
+//echo($query);
 
-
-
-
+db_q($query);
 
 ?>
 
@@ -50,13 +40,12 @@ if (!empty($_POST['origin'])) {
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
 	
-	<script type='text/javascript' src='script/script.js' ></script>
+	<script type='text/javascript' src='script/station.js' ></script>
 	
-	<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
+	<script type="text/javascript" src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 	
-	<script src='http://heresay.org.uk/api/js/mapstraction.js'></script>
+	<script type="text/javascript" src='http://heresay.org.uk/api/js/mapstraction.js'></script>
 	
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 	
 </head> 
@@ -67,6 +56,22 @@ if (!empty($_POST['origin'])) {
 	
 	<div id='container'>
     	<h1>Citizen Band Radio</h1>
+		
+		<div id='userlist_container'>
+			<h2>Companions</h2> 
+			
+			<div id='userlist'>
+
+			</div>
+		</div>
+		
+
+		<div id='playlist_container'>
+			<h2>Your shared playlist</h2>
+			<div id='playlist'>
+
+			</div>
+		</div>		
 		
 		
 	</div>

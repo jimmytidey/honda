@@ -34,18 +34,7 @@ if (isset($_GET['token'])) {
 //now, get the users shit together 
 
 $url ="http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=$user_name&api_key=$api_key&format=json&limit=10";
-$top_tracks_json = urlToText($url);
-
-$top_tracks = json_decode($top_tracks_json, true);
-
-$tracks = '';
-
-foreach($top_tracks['toptracks']['track'] as $track) {
-
-	$tracks .= $track['artist']['name'] . " - ";
-	$tracks .= $track['name'] . "<br/>";
-
-}
+$top_tracks_json = htmlspecialchars(urlToText($url));
 
 ?>
 
@@ -59,7 +48,6 @@ foreach($top_tracks['toptracks']['track'] as $track) {
 	<title>Jimmy Tidey</title> 
 
 	<link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
-	
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 	
@@ -85,17 +73,17 @@ foreach($top_tracks['toptracks']['track'] as $track) {
 		
 		<h2>Journey start</h2>
 		
-		<form method='POST' target ='your-station.php' >
-			<label for='origin'>Starting From&nbsp;</lable><input type='text' id='origin' name='origin' >	
+		<form method='post' action='your-station.php' >
+			<label for='origin'>Starting From&nbsp;</label><input type='text' id='origin' name='origin' />	
 			<div id='start_map' class='journey_map' ></div>
 		
 			<h2>Journey end</h2>
-			<label for='detination'>Destination&nbsp;</lable><input type='text' id='destination' name='destination' >	
+			<label for='destination'>Destination&nbsp;</label><input type='text' id='destination' name='destination' />	
 			<div id='end_map' class='journey_map' ></div>
 		
 			<h2>Details</h2>
 
-			<label for='duration'>Estimated journey duration&nbsp;</lable>
+			<label for='duration'>Estimated journey duration&nbsp;</label>
 			<select id='duration' name='duration' >
 				<option value='0.5'>30 mins</option>
 				<option value='1'>1 hour</option>
@@ -111,13 +99,13 @@ foreach($top_tracks['toptracks']['track'] as $track) {
 			<input type='hidden' name='lastfm_id' value="<? echo $user['session']['key'];  ?>"  />	
 			
 			<input type='hidden' name='name' value="<? echo $user['session']['name'];   ?>"  />
+
+			<input type='hidden' name='tracks' value="<? echo $top_tracks_json  ?>"  />
 			
-			<input type='hidden' name='tracks' value="<? echo $tracks  ?>"  />	
-					
-		
-			<textarea name='journey_reason' id='journey_reason'> </textarea>
-		
-			<input type='submit' id ='your_station_link' value='visit your station' />
+			<label for='journey_reason'>Care to share the reason for your journey?</label>
+			<textarea name='journey_reason' id='journey_reason' ></textarea>
+
+			<input type='submit' id ='your_station_link' value='Get on the road...' />
 		
 		</form>
 		

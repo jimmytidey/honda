@@ -76,9 +76,23 @@ db_q($query);
 		</div>
 		
 		<div id='right_column' >
+			
+			<div id='now_playing'>
+				<h3>The Pogues</h3>
+				<p>Note: The Pogues were founded in King's Cross</p>
+				<input type='submit' class='big_button' value='Like'  /> <br/>
+				<input type='submit' class='big_button' value='skip'  />
+				
+			</div>
+						
 			<div id='recommend'>
-				<label>What would you like to suggest to your companions</label>
+				<label>What would you like to suggest to your companions?</label>
+				
 				<input type='text' id='suggest' />
+				
+				<p> [ SEARCH FOR MUSIC OR SPOKEN WORD (eg. English Heritage podcasts )]</p>
+				
+					<input type='submit' class='big_button' value='suggest!'  />
 			</div>
 		</div>
 		

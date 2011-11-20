@@ -57,7 +57,7 @@ $top_tracks_json = htmlspecialchars(urlToText($url));
 			echo '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAtMGi9FIBTgJEO7_c1ZK0JRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQzNGXo5BiYmSbnJ18mxJIrw9AhGg" type="text/javascript"></script>';
 		}
 		else { 
-			echo '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=ABQIAAAAtMGi9FIBTgJEO7_c1ZK0JRQ8Umpnz3t-Fc3gMfW6JWnQdyf2aRTlkqBYxHo52jsDDe9n2dQVRfv9kA" type="text/javascript"></script>';
+			echo '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAtMGi9FIBTgJEO7_c1ZK0JRQ8Umpnz3t-Fc3gMfW6JWnQdyf2aRTlkqBYxHo52jsDDe9n2dQVRfv9kA" type="text/javascript"></script>';
 		}
 	
 	

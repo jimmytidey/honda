@@ -30,7 +30,6 @@
 	
 	<script src="http://cdn.pubnub.com/pubnub-3.1.min.js"></script>
 	
-
 	
 </head> 
 

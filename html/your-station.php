@@ -79,7 +79,7 @@ if (isset($_POST['origin'])) {
 		<div id='right_column' >
 			
 			<div id='now_playing'>
-				<h3>The Pogues</h3>
+				<h3><strong>NOW PLAYING:</strong> The Pogues</h3>
 				<p>Note: The Pogues were founded in King's Cross</p>
 				<input type='submit' class='big_button' value='Like'  /> <br/>
 				<input type='submit' class='big_button' value='skip'  />

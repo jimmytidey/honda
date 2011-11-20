@@ -5,7 +5,13 @@ ini_set('display_errors', '1');
 
 $api_key = '6a02e719627efa9c150dc51595c9ccb9';
 $api_secret = 'f7bbcc6ef14fd79655f09efb14b99316'; 
-$callback_url  = urlencode('http://localhost:8888/honda/html/last_fm_login.php');
+if ($_SERVER['HTTP_HOST'] =='localhost:8888') {
+	$callback_url  = urlencode('http://localhost:8888/honda/html/last_fm_login.php');
+}
+
+else { 
+ $callback_url  = urlencode('http://honda.jimmytidey.co.uk/last_fm_login.php');	
+}
 
 include('urlToObject.php');
 

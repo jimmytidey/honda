@@ -1,24 +1,25 @@
 <?
 require_once('db_functions.php'); 
 
-$origin = addslashes($_POST['origin']);
-$destination = addslashes($_POST['destination']);
-if (!empty($_POST['journey_reason'])) {$journey_reason = addslashes($_POST['journey_reason']);}
-else {$journey_reason = '0';}
-$duration = addslashes($_POST['duration']);
-if (!empty($_POST['lastfm_id'])) { $lastfm_id = addslashes($_POST['lastfm_id']);}
-else { $lastfm_id = '0';}
-if (!empty($_POST['tracks'])) {$tracks = addslashes(htmlspecialchars_decode($_POST['tracks']));}
-else {$tracks = '0';}
+if (isset($_POST['origin'])) { 
 
-$name = addslashes($_POST['name']);					
-$departure_time = time();
-$arrival_time = time() + $_POST['duration'] * 3600; 
-$query = "INSERT INTO users (lastfm_id, name, journey_reason, playlist, departure_time, arrival_time, origin, destination) VALUES ('$lastfm_id', '$name', '$journey_reason', '$tracks', '$departure_time', '$arrival_time', '$origin', '$destination')";
+	$origin = addslashes($_POST['origin']);
+	$destination = addslashes($_POST['destination']);
+	if (!empty($_POST['journey_reason'])) {$journey_reason = addslashes($_POST['journey_reason']);}
+	else {$journey_reason = '0';}
+	$duration = addslashes($_POST['duration']);
+	if (!empty($_POST['lastfm_id'])) { $lastfm_id = addslashes($_POST['lastfm_id']);}
+	else { $lastfm_id = '0';}
+	if (!empty($_POST['tracks'])) {$tracks = addslashes(htmlspecialchars_decode($_POST['tracks']));}
+	else {$tracks = '0';}
 
-//echo($query);
+	$name = addslashes($_POST['name']);					
+	$departure_time = time();
+	$arrival_time = time() + $_POST['duration'] * 3600; 
+	$query = "INSERT INTO users (lastfm_id, name, journey_reason, playlist, departure_time, arrival_time, origin, destination) VALUES ('$lastfm_id', '$name', '$journey_reason', '$tracks', '$departure_time', '$arrival_time', '$origin', '$destination')";
 
-db_q($query);
+	db_q($query);
+}
 
 ?>
 

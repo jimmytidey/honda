@@ -26,7 +26,7 @@ CREATE TABLE `honda`.`users` (
 	<meta charset=utf-8 />
 
 
-	<title>Jimmy Tidey</title> 
+	<title>HereTrumpet</title> 
 	
 	<link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
 	
@@ -48,7 +48,7 @@ CREATE TABLE `honda`.`users` (
 	<div pub-key="pub-3935e335-b4d7-4c1d-a53f-9902f8d18cb5" sub-key="sub-3cb83317-12c2-11e1-ae8f-cd58960bee98" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
 	
 	<div id='container'>
-    	<h1 id='title'>Citizen Band Radio</h1>
+    	<h1 id='title'>HereTrumpet</h1>
 		
 		<h1 class='login_switch'><a href='last_fm_login.php' >I do have a Last.fm account &raquo;</a></h1>
 

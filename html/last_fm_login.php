@@ -51,7 +51,7 @@ $top_tracks_json = htmlspecialchars(urlToText($url));
 
 	<meta charset=utf-8 />
 
-	<title>Jimmy Tidey</title> 
+	<title>HereTrumpet</title> 
 
 	<link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -83,7 +83,7 @@ $top_tracks_json = htmlspecialchars(urlToText($url));
 	<div pub-key="pub-3935e335-b4d7-4c1d-a53f-9902f8d18cb5" sub-key="sub-3cb83317-12c2-11e1-ae8f-cd58960bee98" ssl="off" origin="pubsub.pubnub.com" id="pubnub"></div>
 	
 	<div id='container'>
-    	<h1>Citizen Band Radio</h1>
+    	<h1>HereTrumpet</h1>
 		
 		<h2>Journey start</h2>
 		

@@ -1,1 +1,1 @@
-AddHandler php-stable .php
+AddHandler php-legacy .php

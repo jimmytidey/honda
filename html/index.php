@@ -21,7 +21,7 @@ CREATE TABLE `honda`.`users` (
 <!DOCTYPE html>
 
 <html>
-<head>
+<head class='test'>
 
 	<meta charset=utf-8 />
 

@@ -26,7 +26,7 @@ CREATE TABLE `honda`.`users` (
 	<meta charset=utf-8 />
 
 
-	<title>HereTrumpet</title> 
+	<title>HereTrumpets</title> 
 	
 	<link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
 	
